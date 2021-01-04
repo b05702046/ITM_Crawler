@@ -12,7 +12,7 @@ from ptt.items import PostItem
 class PTTSpider(scrapy.Spider):
     name = 'ptt'
     allowed_domains = ['ptt.cc']
-    start_urls = ('https://www.ptt.cc/bbs/HatePolitics/index1219.html', )
+    start_urls = ('https://www.ptt.cc/bbs/Gossiping/index2800.html', )
 
     _retries = 0
     MAX_RETRY = 1
@@ -51,7 +51,7 @@ class PTTSpider(scrapy.Spider):
 
     def parse_post(self, response):
         item = PostItem()
-        item['ID'] = re.findall(r'https://www.ptt.cc/bbs/HatePolitics/(\w.\d+.\w.\S+).html', response.url)[0]
+        item['ID'] = re.findall(r'https://www.ptt.cc/bbs/Gossiping/(\w.\d+.\w.\S+).html', response.url)[0]
         item['title'] = response.xpath('//meta[@property="og:title"]/@content')[0].extract()
         item['kanban'] = response.xpath('//div[@class="article-metaline-right"]/span[text()="看板"]/following-sibling::span[1]/text()')[0].extract()
         item['author'] = response.xpath('//div[@class="article-metaline"]/span[text()="作者"]/following-sibling::span[1]/text()')[0].extract().split(' ')[0]

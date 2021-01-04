@@ -67,7 +67,7 @@ ITEM_PIPELINES = {
 }
 
 MONGODB_URI = 'mongodb://localhost:27017'
-MONGODB_DB_NAME = 'ptt_scrapy'
+MONGODB_DB_NAME = 'gossip_scrapy'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

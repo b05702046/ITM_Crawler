@@ -16,7 +16,7 @@ class PttPipeline:
 
     def open_spider(self, spider):
         db_uri = spider.settings.get('MONGODB_URI', 'mongodb://localhost:27017')
-        db_name = spider.settings.get('MONGODB_DB_NAME', 'ptt_scrapy')
+        db_name = spider.settings.get('MONGODB_DB_NAME', 'gossip_scrapy')
         self.db_client = MongoClient('mongodb://localhost:27017')
         self.db = self.db_client[db_name]
 
