@@ -57,11 +57,6 @@ class PTTSpider(scrapy.Spider):
         item['author'] = response.xpath('//div[@class="article-metaline"]/span[text()="作者"]/following-sibling::span[1]/text()')[0].extract().split(' ')[0]
         item['date'] = response.xpath('//div[@class="article-metaline"]/span[text()="時間"]/following-sibling::span[1]/text()')[0].extract()
 
-        # 處理內文
-        converter = html2text.HTML2Text()
-        converter.ignore_links = True
-        #content = converter.handle(response.xpath('//div[@id="main-content"]')[0].extract())
-        #item['content'] = '\n'.join(content.split('\n')[2:])
 
         # 處理內文
         regex_content = r'<span class="article-meta-tag">時間<\/span><span class="article-meta-value">.*<\/span><\/div>([\s\S]+)--'
